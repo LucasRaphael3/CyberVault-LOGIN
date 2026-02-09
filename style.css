@@ -1,0 +1,190 @@
+:root {
+    --primary-color: #0f0;
+    /* Definindo um vermelho mais vibrante para a caveira */
+    --error-color: #ff0000;
+    --bg-color: #050505;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image: radial-gradient(#112211 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#matrixCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2s ease-in;
+}
+
+.container {
+    width: 400px;
+    max-width: 90%;
+    padding: 2rem;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color);
+    background: rgba(0, 10, 0, 0.95);
+    position: relative;
+    z-index: 50;
+    transition: opacity 1s ease-out;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Acessibilidade de Foco */
+input:focus-visible, button:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    box-shadow: 0 0 15px #fff;
+}
+
+.input-group { margin-bottom: 1.5rem; }
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+button:hover { background: #fff; }
+button:disabled { background: #1a331a; color: #88aa88; cursor: not-allowed; }
+
+#feedback-area {
+    margin-top: 1.5rem;
+    min-height: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.success { color: var(--primary-color); }
+.error { color: var(--error-color); }
+
+.hint {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* --- Estilos da Tela de Bloqueio (Caveira) --- */
+#lockout-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(20, 0, 0, 0.98);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    color: var(--error-color);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    overflow-y: auto; 
+}
+
+/* Estilo para a arte ASCII */
+#skull-art {
+    font-family: monospace;
+    font-weight: bold;
+    white-space: pre; 
+    
+    font-size: clamp(4px, 1.1vh, 10px); 
+    
+    line-height: 1; 
+    
+    text-shadow: 0 0 15px var(--error-color);
+    margin-bottom: 1rem;
+    animation: red-pulse 2s infinite;
+}
+
+#lockout-screen h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 5px var(--error-color);
+}
+
+.lockout-question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    animation: blink 1s infinite;
+}
+
+#resetBtn {
+    background: var(--error-color);
+    color: #000;
+    max-width: 300px;
+    box-shadow: 0 0 20px var(--error-color);
+}
+#resetBtn:hover {
+    background: #fff;
+    box-shadow: 0 0 30px #fff;
+}
+
+/* Animações dramáticas */
+@keyframes red-pulse {
+    0%, 100% { text-shadow: 0 0 10px var(--error-color); opacity: 1; }
+    50% { text-shadow: 0 0 30px var(--error-color), 0 0 50px var(--error-color); opacity: 0.8; }
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+/* --- ACESSIBILIDADE DE MOVIMENTO --- */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+    .success, .lockout-question, #skull-art { animation: none; }
+}

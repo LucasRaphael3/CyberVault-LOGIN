@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVault Protocol - Login Seguro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <div class="overlay" aria-hidden="true"></div>
+
+    <main class="container">
+        <h1 data-text="CyberVault" aria-label="Cyber Vault">CyberVault</h1>
+        
+        <form id="loginForm" novalidate>
+            <div class="input-group">
+                <label for="username">IDENTIFICAÇÃO (ID)</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username"
+                    autocomplete="username" 
+                    placeholder="Ex: admin"
+                    aria-required="true"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">CHAVE DE ACESSO</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"
+                    placeholder="Ex: 1234"
+                    aria-required="true"
+                    aria-describedby="password-hint"
+                >
+                <div id="password-hint" class="hint">*Sistema Offline. Validação Local.</div>
+            </div>
+
+            <button type="submit" id="submitBtn">EXECUTAR LOGIN</button>
+        </form>
+
+        <div id="feedback-area" aria-live="assertive" role="alert"></div>
+    </main>
+
+    <div id="lockout-screen" aria-hidden="true" style="display: none;">
+        <pre id="skull-art" role="img" aria-label="Caveira vermelha feita de caracteres ASCII">
+                            uuuuuuuuuuuuuuuuuuuuu.
+                   .u$$$$$$$$$$$$$$$$$$$$$$$$$$W.
+                 u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Wu.
+               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
+              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+         `    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+           .i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
+           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W
+          .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W
+         .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
+         #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.
+         W$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$u       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$~
+$#      `"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$i        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$        #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$.        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+ $$      $iW$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!
+ $$i      $$$$$$$#"" `"""#$$$$$$$$$$$$$$$$$#""""""#$$$$$$$$$$$$$$$W
+ #$$W    `$$$#"            "       !$$$$$`           `"#$$$$$$$$$$#
+  $$$     ``                 ! !iuW$$$$$                 #$$$$$$$#
+  #$$    $u                  $   $$$$$$$                  $$$$$$$~
+   "#    #$$i.               #   $$$$$$$.                 `$$$$$$
+          $$$$$i.                """#$$$$i.               .$$$$#
+          $$$$$$$$!         .   `    $$$$$$$$$i           $$$$$
+          `$$$$$  $iWW   .uW`        #$$$$$$$$$W.       .$$$$$$#
+            "#$$$$$$$$$$$$#`          $$$$$$$$$$$iWiuuuW$$$$$$$$W
+               !#""    ""             `$$$$$$$##$$$$$$$$$$$$$$$$
+          i$$$$    .                   !$$$$$$ .$$$$$$$$$$$$$$$#
+         $$$$$$$$$$`                    $$$$$$$$$Wi$$$$$$#"#$$`
+         #$$$$$$$$$W.                   $$$$$$$$$$$#   ``
+          `$$$$##$$$$!       i$u.  $. .i$$$$$$$$$#""
+             "     `#W       $$$$$$$$$$$$$$$$$$$`      u$#
+                            W$$$$$$$$$$$$$$$$$$      $$$$W
+                            $$`!$$$##$$$$``$$$$      $$$$!
+                           i$" $$$$  $$#"`  """     W$$$$
+                                                   W$$$$!
+                      uW$$  uu  uu.  $$$  $$$Wu#   $$$$$$
+                     ~$$$$iu$$iu$$$uW$$! $$$$$$i .W$$$$$$
+             ..  !   "#$$$$$$$$$$##$$$$$$$$$$$$$$$$$$$$#"
+             $$W  $     "#$$$$$$$iW$$$$$$$$$$$$$$$$$$$$$W
+             $#`   `       ""#$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                              !$$$$$$$$$$$$$$$$$$$$$#`
+                              $$$$$$$$$$$$$$$$$$$$$$!
+                            $$$$$$$$$$$$$$$$$$$$$$$`
+                             $$$$$$$$$$$$$$$$$$$$"
+    Here Be Dragons
+        </pre>
+        <h2>VIOLAÇÃO DE SEGURANÇA DETECTADA</h2>
+        <p>Múltiplas tentativas falhas. O sistema foi bloqueado.</p>
+        <p class="lockout-question">>> Esqueceu sua chave de acesso, operador? <<</p>
+        
+        <button id="resetBtn">REINICIAR SISTEMA</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
