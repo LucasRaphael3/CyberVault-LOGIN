@@ -49,14 +49,11 @@ const MatrixEffect = {
     }
 };
 
-// --- Módulo de Login  ---
 const LoginSystem = {
-    // --- Configurações e Estado ---
     mockUser: { user: "admin", pass: "1234" },
-    failedAttempts: 0, // contador de falhas
-    maxAttempts: 3,    // limite de tentativas
+    failedAttempts: 0, 
+    maxAttempts: 3,    
 
-    // --- Elementos DOM ---
     form: document.getElementById('loginForm'),
     usernameInput: document.getElementById('username'),
     passwordInput: document.getElementById('password'),
@@ -72,7 +69,6 @@ const LoginSystem = {
         this.passwordInput.addEventListener('input', () => this.validateInputs());
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         
-        // Ouvinte para o botão de reiniciar na tela da caveira
         this.resetBtn.addEventListener('click', () => this.resetSystem());
 
         this.validateInputs();
@@ -101,14 +97,11 @@ const LoginSystem = {
 
         setTimeout(() => {
             if (user === this.mockUser.user && pass === this.mockUser.pass) {
-                // Sucesso: Zera o contador de falhas
                 this.failedAttempts = 0;
                 this.handleSuccess();
             } else {
-                // Erro: Incrementa o contador
                 this.failedAttempts++;
                 
-                // Verifica se atingiu o limite de 3 erros
                 if (this.failedAttempts >= this.maxAttempts) {
                     this.triggerLockout();
                 } else {
@@ -139,8 +132,7 @@ const LoginSystem = {
             }, 1500);
         }
     },
-
-    // Lida com erro normal (tentativas 1 e 2)
+    
     handleError: function() {
         const attemptsLeft = this.maxAttempts - this.failedAttempts;
         this.feedback.innerText = `ERRO: Credenciais inválidas. Tentativas restantes: ${attemptsLeft}`;
@@ -162,31 +154,24 @@ const LoginSystem = {
         this.passwordInput.focus();
     },
 
-    // Aciona o modo "Caveira Vermelha" (tentativa 3)
+
     triggerLockout: function() {
-        // Esconde o container de login
         this.container.style.display = 'none';
         
-        // Mostra a tela de bloqueio vermelha
         this.lockoutScreen.style.display = 'flex';
         this.lockoutScreen.setAttribute('aria-hidden', 'false');
         
         this.resetBtn.focus();
     },
 
-    // Reinicia o sistema para tentar novamente
     resetSystem: function() {
-         // Zera o contador
          this.failedAttempts = 0;
          
-         // Traz de volta o container de login
          this.container.style.display = 'block';
          
-         // Esconde a tela de bloqueio
          this.lockoutScreen.style.display = 'none';
          this.lockoutScreen.setAttribute('aria-hidden', 'true');
          
-         // Limpa os campos e reseta o estado visual
          this.feedback.innerText = '';
          this.passwordInput.value = '';
          this.usernameInput.value = '';
@@ -194,5 +179,6 @@ const LoginSystem = {
          this.usernameInput.focus();
     }
 };
+
 
 LoginSystem.init();
