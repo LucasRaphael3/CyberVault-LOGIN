@@ -25,7 +25,7 @@ O projeto foi desenvolvido para atender estritamente às Metas de Usabilidade e 
 
 ### 2. Metas de Experiência
 * **Esteticamente Apreciável:** Uso de paleta Neon Green monocromática, fontes monoespaçadas e o efeito de fundo *Matrix Rain* (Chuva Digital) criam uma atmosfera imersiva.
-* **Divertido & Interessante:** O uso de vocabulário temático ("Decriptando", "Operador", "Violação Detectada") transforma uma tarefa chata (fazer login) em um micro-jogo de RPG.
+* **Divertido & Interessante:** O uso de vocabulário temático ("Decriptando", "Operador", "Violação Detectada") transforma uma tarefa chata (fazer login) em algo gamificado.
 * **Emocionalmente Adequado:** A interface gera tensão proposital através de delays artificiais de processamento e feedback visual agressivo (tremor de tela) ao errar.
 * **Satisfatório:** O feedback de sucesso não é apenas uma mensagem, é uma "recompensa visual" onde a interface se limpa, dando sensação de conquista.
 * **Incentivador de Criatividade:** A "Caveira ASCII" escondida no erro fatal é um *Easter Egg* que recompensa a curiosidade (ou persistência no erro) do usuário.
@@ -35,7 +35,6 @@ O projeto foi desenvolvido para atender estritamente às Metas de Usabilidade e 
 ## ⚙️ Funcionalidades Técnicas
 
 * **Validação Local (Client-Side):** Não requer banco de dados ou internet. Toda a lógica roda no navegador do usuário.
-* **Modularização:** Código separado em `HTML` (Estrutura), `CSS` (Estilo) e `JS` (Comportamento) para fácil manutenção.
 * **Matrix Rain Effect:** Um canvas HTML5 desenha caracteres caindo em tempo real no fundo.
 * **Lockout System:** Lógica que conta tentativas falhas. Ao atingir 3 erros, o sistema "trava", exibindo uma arte ASCII gigante e impedindo novas tentativas até o reset manual.
 * **Animações CSS:** Uso de *Glitch Effects*, *Shakes* (tremores) e transições de opacidade.
